@@ -1,13 +1,5 @@
 # Film Memorabilia
 
-### Learn how to build this!
-
-If you'd like a step-by-step guide on how to build this just **CLICK THE IMAGE BELOW**
-
-
-
-**LIKE**, **SUBSCRIBE**, and **SMASH THE NOTIFICATION BELL**!!!
-
 ## App Setup (localhost)
 
 ```
@@ -36,5 +28,4 @@ npm i
 npm run dev
 ```
 
-You should be good to go! If you need any more help, take a look at the tutorial video by clicking the image above.
 
