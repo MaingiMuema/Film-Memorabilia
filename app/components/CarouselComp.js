@@ -9,13 +9,13 @@ export default function CarouselComp() {
       <div className='max-w-[1200px] mx-auto'>
         <Carousel showArrows={true} autoPlay={true} interval={3000} infiniteLoop={true} showThumbs={false}>
             <div>
-                <a href="#"><img src="/images/banner/1.png" /></a>
+                <img src="/images/banner/1.png" />
             </div>
             <div>
-                <a href="#"><img src="/images/banner/2.png" /></a/>
+                <img src="/images/banner/2.png" />
             </div>
             <div>
-                <a href="#"><img src="/images/banner/3.png" /></a>
+                <img src="/images/banner/3.png" />
             </div>
         </Carousel>
       </div>
