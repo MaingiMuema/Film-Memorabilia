@@ -1,20 +1,17 @@
-# eBay Clone / (ebay-clone)
+# Film Memorabilia
 
 ### Learn how to build this!
 
 If you'd like a step-by-step guide on how to build this just **CLICK THE IMAGE BELOW**
 
-[![GO TO JOHN WEEKS DEV TUTORIAL VIDEOS](https://github.com/John-Weeks-Dev/ebay-clone/assets/108229029/1d1d9f20-0f5b-4d00-8d5a-9aca0d3e414c)](https://www.youtube.com/watch?v=LtPYuFhYf1w)
 
-Come and check out my YOUTUBE channel for lots more tutorials -> https://www.youtube.com/@johnweeksdev
 
 **LIKE**, **SUBSCRIBE**, and **SMASH THE NOTIFICATION BELL**!!!
 
 ## App Setup (localhost)
 
 ```
-git clone https://github.com/John-Weeks-Dev/ebay-clone.git
-
+git clone https://github.com/MaingiMuema/Film-Memorabilia.git
 cp .env.example .env
 ```
 
