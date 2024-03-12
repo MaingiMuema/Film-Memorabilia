@@ -39,7 +39,7 @@ const AddProduct = () => {
     const filename = `${uuidv4()}-${product.image.name}`;
 
     const { data, error } = await supabase.storage
-      .from('Products') // Use your storage bucket name here
+      .from('documents') // Use your storage bucket name here
       .upload(filename, file); // Upload the image
 
       const filepath = data.path;
@@ -50,7 +50,7 @@ const AddProduct = () => {
     } else {
 
     const publicUrl = await supabase.storage
-      .from('Products')
+      .from('documents')
       .getPublicUrl(filename);
 
     setImageUrl(publicUrl.data.publicUrl )
