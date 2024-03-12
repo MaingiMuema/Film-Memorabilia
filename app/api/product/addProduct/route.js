@@ -1,34 +1,28 @@
-const multer = require('multer');
-import prisma from "@/app/libs/Prisma";
-import { NextResponse } from "next/server";
+import prisma from '@/app/libs/Prisma';
+import { NextResponse, NextRequest } from 'next/server';
+import { supabase } from '@/app/libs/supabaseClient';
 
-const upload = multer({ dest: 'uploads/' }); // Configure Multer for image storage
+export async function POST(req){
+  try {
+    const { title, description, price, image } = await req.json();
 
-export async function POST(req, res) {
-    try {
-      // Extract product data from request body
-      const body = req.body;
+    console.log(title)
 
-      console.log(body);
+    // Insert product data into Prisma database
+    const newProduct = await prisma.products.create({
+      data: {
+        title,
+        description,
+        price,
+        url: image, // Assuming the image URL is stored in the 'imageUrl' field
+      },
+    });
 
-      // Handle image upload using Multer
-      let imageUrl;
-      if (req.file) {
-        imageUrl = `uploads/${req.file.filename}`;
-      }
+    // You can perform additional actions here, if needed
 
-      const newProduct = await prisma.products.create({
-        data: {
-          title,
-          description,
-          price: parseInt(price),
-          image: imageUrl,
-        },
-      });
-
-      return NextResponse.json({ message: 'Product created successfully!', product: newProduct });
-    } catch (error) {
-      console.error(error);
-      return NextResponse.json({ message: 'Error creating product!', error }, { status: 500 });
+    return NextResponse.json({ message: 'Product added successfully', data: newProduct });
+  } catch (error) {
+    console.error('Error adding product:', error);
+    return NextResponse.json({ error: 'Internal Server Error' });
   }
-}
+};

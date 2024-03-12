@@ -1,8 +1,9 @@
 'use client';
-
 import Link from "next/link";
 
 export default function Product({ product }) {
+
+  const filepath = `documents/${product.url}`
     
   return ( 
     <>
