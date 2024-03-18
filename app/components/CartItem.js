@@ -16,7 +16,16 @@ export default function CartItem({ product }) {
   return (
     <>
         <div className="relative flex justify-start my-2 border w-full p-6">
-            <img src={product?.url+'/150'} className="rounded-md w-[150px] h-[150px]" />
+        { 
+          product?.url ? 
+          <img 
+            className="rounded cursor-pointer" 
+            src={product.id > 20 ? product.url : product.url + '/190'} 
+            alt={product.title} 
+          /> 
+          : 
+          null 
+        }
 
             <div className="overflow-hidden pl-2 w-full">
                 <div className="flex items-center justify-between w-full">
@@ -24,7 +33,7 @@ export default function CartItem({ product }) {
                         {product?.title}
                     </div>
                     <div className="font-bold text-lg">
-                        £{(product?.price / 100).toFixed(2)}
+                        ksh{(product?.price / 100).toFixed(2)}
                     </div>
                 </div>
 

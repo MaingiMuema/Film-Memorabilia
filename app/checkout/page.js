@@ -49,10 +49,10 @@ export default function Checkout() {
         }
 
         getAdddress()
-        setTimeout(() => stripeInit(), 300)
+        useIsLoading(false)
     }, [user])
 
-    const stripeInit = async () => {
+    {/*const stripeInit = async () => {
         stripe.current = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK_KEY || '');
     
         const response = await fetch('/api/stripe', {
@@ -71,6 +71,9 @@ export default function Checkout() {
                 iconColor: "#EE4B2B"
             }
         };
+
+   
+
         card.current = elements.current.create("card", {  hidePostalCode: true, style: style });
     
         card.current.mount("#card-element");
@@ -82,6 +85,8 @@ export default function Checkout() {
         useIsLoading(false)
     }
 
+     */}
+
     const pay = async (event) => {
         event.preventDefault()
 
@@ -89,21 +94,15 @@ export default function Checkout() {
             showError('Please add shipping address!')
             return 
         }
-        
-        let result = await stripe.current.confirmCardPayment(clientSecret.current, {
-            payment_method: { card: card.current },
-        })
-    
-        if (result.error) {
-            showError(result.error.message)
-        } else {
+        alert("Make payment to this till: 5434343 and once done press OK")
+
             useIsLoading(true)
 
             try {
                 let response = await fetch('/api/orders/create', {
                     method: "POST",
                     body: JSON.stringify({
-                        stripe_id: result.paymentIntent.id,
+                        stripe_id: "d23f2d",
                         name: addressDetails.name,
                         address: addressDetails.address,
                         zipcode: addressDetails.zipcode,
@@ -125,7 +124,8 @@ export default function Checkout() {
             }
 
             useIsLoading(false)
-        }
+
+        
     }
 
     const showError = (errorMsgText) => {
@@ -188,7 +188,7 @@ export default function Checkout() {
                             <div className="p-4">
                                 <div className="flex items-baseline justify-between text-sm mb-1">
                                     <div>Items ({cart.getCart().length})</div>
-                                    <div>£{(cart.cartTotal() / 100).toFixed(2)}</div>
+                                    <div>ksh{(cart.cartTotal() / 100).toFixed(2)}</div>
                                 </div>
                                 <div className="flex items-center justify-between mb-4 text-sm">
                                     <div>Shipping:</div>
@@ -200,7 +200,7 @@ export default function Checkout() {
                                 <div className="flex items-center justify-between my-4">
                                     <div className="font-semibold">Order total</div>
                                     <div className="text-2xl font-semibold">
-                                        £{(cart.cartTotal() / 100).toFixed(2)}
+                                        ksh{(cart.cartTotal() / 100).toFixed(2)}
                                     </div>
                                 </div>
 

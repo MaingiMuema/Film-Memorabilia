@@ -9,7 +9,16 @@ export default function CheckoutItem({ product }) {
   return (
     <>
         <div className="flex justify-start rounded-lg mb-2 border p-4">
-            <img className="rounded-md w-[150px] h-[150px]" src={product.url+'/150'} />
+        { 
+          product?.url ? 
+          <img 
+            className="rounded cursor-pointer" 
+            src={product.id > 20 ? product.url : product.url + '/190'} 
+            alt={product.title} 
+          /> 
+          : 
+          null 
+        }
 
             <div className="overflow-hidden pl-2">
                 <div className="font-semibold">
@@ -17,11 +26,11 @@ export default function CheckoutItem({ product }) {
                 </div>
 
                 <div className="text-lg font-semibold ">
-                    <span className="font-bold">£{(product.price / 100).toFixed(2)}</span>
+                    <span className="font-bold">Ksh{(product.price / 100).toFixed(2)}</span>
                 </div>
 
                 <div className="relative flex items-center text-[14px] text-gray-500">
-                    <div className="line-through">£{((product.price * 1.2) / 100).toFixed(2)}</div>
+                    <div className="line-through">Ksh{((product.price * 1.2) / 100).toFixed(2)}</div>
                     <div className="px-2">-</div>
                     <div className="line-through">20%</div>
                 </div>

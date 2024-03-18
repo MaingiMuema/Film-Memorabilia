@@ -4,7 +4,7 @@ import { supabase } from '@/app/libs/supabaseClient';
 
 export async function POST(req){
   try {
-    const { title, description, price, image } = await req.json();
+    const { title, description, category, price, image } = await req.json();
 
     console.log(title)
 
@@ -13,6 +13,7 @@ export async function POST(req){
       data: {
         title,
         description,
+        category,
         price,
         url: image, // Assuming the image URL is stored in the 'imageUrl' field
       },
